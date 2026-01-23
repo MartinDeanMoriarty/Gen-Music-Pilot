@@ -1,0 +1,9 @@
+{
+    "comfy_url": "http://127.0.0.1:8188",
+    "output_dir": "/home/martindean/ComfyUI/output",
+    "fallback_dir": "/home/martindean/ComfyUI/output/audio",
+    "location": "Köln",
+    "openweathermap_apikey": "0473acba4d431ca4dca86d4868e6c924",
+    "streaming": false,
+    "audio_player": true     
+}
