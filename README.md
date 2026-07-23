@@ -91,7 +91,7 @@
 ---
 ## Warning
 > [!WARNING]
-> Downloading an using this project means you are old enough to know the risks of the internet!
+> Downloading and using this project means you are old enough to know the risks of the internet!
 >
 > **This project is NOT easy to set up and get running!
 > So make sure you got some time on your hand for trouble shooting.**
