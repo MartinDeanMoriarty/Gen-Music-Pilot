@@ -1,5 +1,8 @@
-gradio>=4.0.0
+# Runtime dependencies (everything else is the standard library).
 requests
-pydub
-simpleaudio
-aiohttp
+gradio>=4.0.0
+
+# Not pip - must be installed separately (see docs/INSTALL.md):
+#   ffmpeg, ffprobe, ffplay   on PATH  (ffplay only for local audio playback)
+#   ComfyUI + custom nodes    reachable over HTTP
+#   Ollama                    driven from inside ComfyUI

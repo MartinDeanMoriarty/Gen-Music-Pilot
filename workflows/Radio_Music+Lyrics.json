@@ -2,14 +2,14 @@
   "18": {
     "inputs": {
       "seconds": [
-        "40",
+        "114",
         0
       ],
       "batch_size": 1
     },
     "class_type": "EmptyAceStepLatentAudio",
     "_meta": {
-      "title": "EmptyAceStepLatentAudio"
+      "title": "Empty Ace Step 1.0 Latent Audio"
     }
   },
   "19": {
@@ -52,13 +52,13 @@
     },
     "class_type": "ConditioningZeroOut",
     "_meta": {
-      "title": "ConditioningZeroOut"
+      "title": "Conditioning Zero Out"
     }
   },
   "23": {
     "inputs": {
       "tags": [
-        "54",
+        "41",
         0
       ],
       "lyrics": [
@@ -94,8 +94,8 @@
   },
   "25": {
     "inputs": {
-      "seed": 572646930919533,
-      "steps": 65,
+      "seed": 1022110023845958,
+      "steps": 100,
       "cfg": 4,
       "sampler_name": "er_sde",
       "scheduler": "linear_quadratic",
@@ -138,75 +138,13 @@
       "title": "VAE Decode Audio"
     }
   },
-  "32": {
-    "inputs": {
-      "value": ""
-    },
-    "class_type": "PrimitiveStringMultiline",
-    "_meta": {
-      "title": "Song Genre & Description"
-    }
-  },
-  "39": {
-    "inputs": {
-      "value": 0
-    },
-    "class_type": "easy int",
-    "_meta": {
-      "title": "Song Length - Seconds"
-    }
-  },
-  "40": {
-    "inputs": {
-      "a": [
-        "39",
-        0
-      ]
-    },
-    "class_type": "CM_IntToFloat JK",
-    "_meta": {
-      "title": "Length"
-    }
-  },
   "41": {
     "inputs": {
-      "value": ""
+      "value": "Blumenland, Grüne Wiese, Pop Rock, amotional calm but happy."
     },
     "class_type": "PrimitiveStringMultiline",
     "_meta": {
-      "title": "Song Name"
-    }
-  },
-  "54": {
-    "inputs": {
-      "delimiter": ",",
-      "string1": [
-        "41",
-        0
-      ],
-      "string2": [
-        "32",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
-    }
-  },
-  "77": {
-    "inputs": {
-      "filename_prefix": "audio/music",
-      "quality": "V0",
-      "audioUI": "",
-      "audio": [
-        "80",
-        0
-      ]
-    },
-    "class_type": "SaveAudioMP3",
-    "_meta": {
-      "title": "Save Audio (MP3)"
+      "title": "Genre Tags"
     }
   },
   "79": {
@@ -236,7 +174,7 @@
   "81": {
     "inputs": {
       "url": "http://127.0.0.1:11434",
-      "model": "mistral-nemo:latest",
+      "model": "qwen3.5:latest",
       "keep_alive": 0,
       "keep_alive_unit": "minutes",
       "🔄 Reconnect": null
@@ -254,25 +192,25 @@
       "mirostat_eta": 0.1,
       "enable_mirostat_tau": false,
       "mirostat_tau": 5,
-      "enable_num_ctx": false,
+      "enable_num_ctx": true,
       "num_ctx": 16384,
       "enable_repeat_last_n": false,
       "repeat_last_n": 64,
-      "enable_repeat_penalty": false,
+      "enable_repeat_penalty": true,
       "repeat_penalty": 1.1,
-      "enable_temperature": false,
-      "temperature": 0.8,
+      "enable_temperature": true,
+      "temperature": 0.75,
       "enable_seed": false,
-      "seed": 1990242065,
+      "seed": 1353167629,
       "enable_stop": false,
       "stop": "",
       "enable_tfs_z": false,
       "tfs_z": 1,
-      "enable_num_predict": false,
-      "num_predict": -1,
-      "enable_top_k": false,
+      "enable_num_predict": true,
+      "num_predict": 800,
+      "enable_top_k": true,
       "top_k": 40,
-      "enable_top_p": false,
+      "enable_top_p": true,
       "top_p": 0.9,
       "enable_min_p": false,
       "min_p": 0,
@@ -290,7 +228,7 @@
         0
       ],
       "prompt": [
-        "101",
+        "89",
         0
       ],
       "think": false,
@@ -312,137 +250,44 @@
   },
   "85": {
     "inputs": {
-      "value": "You are a professional and talentet songwriter for a live radio station.\nYour passion is to write lyrics for all sorts of music genres.\nDu bist spezialisiert auf europäische Texte.\nJe nach Song Name oder Referenzen entscheidest du dich für eine Sprache.\nVerwende folgende Strukturblöcke um deinen Songtext zu gliedern:  \n\n[solo]\n[Intro]\n[Verse]\n[Pre-Chorus]\n[Chorus]\n[Hook]\n[Interlude]\n[Bridge]\n[Ourto]\n[Strophe]\n[Refrain]\n[End]\n\n\nWichtig!\nWenn \"Instumental\" in den Genre Tags enthalten ist, dann schreibe keinen Song-Text! Du kannst aber die bekannten Strukturblöcke verweden um einen Intrumental Track zu gliedern.\nOder du verwendest nur folgenden Strukturblock:\n\n[inst]  \n\nEs müssen nicht alle Strukturblöcke verwendet werden und die Reihenfolge ist dir überlassen. \nZur Musik generierung wird das ACE-Step Model verwendet, etwas experimentel, also werde nicht zu ausschweifend.\n\nDo not add any extras like \"here are your Lyrics:\", because your lyrics will be generated straight to real music!\nDenn, \"here are your Lyrics\" hört sich mit Sicherheit seltsam an in einem Lied. das möchtest du nicht!"
+      "value": "Du bist ein erfahrener, vielseitiger Songwriter für einen Radiosender. Du schreibst zu jedem Genre und jeder Stimmung passende Songtexte.\n\nSprache: Entscheide anhand von Songtitel, Interpret und Genre-Beschreibung, in welcher Sprache der Text geschrieben wird. Ist die Zuordnung eindeutig (ein Titel oder Name klingt klar nach einer bestimmten Sprache), schreib in dieser Sprache. Ist sie nicht eindeutig - bei erfundenen Namen oft der Fall - wähle bewusst zwischen Deutsch, Englisch, Spanisch, Französisch und Italienisch statt automatisch bei Deutsch zu bleiben: über mehrere Songs hinweg soll eine echte Sprachvielfalt entstehen, nicht nur deutsche oder englische Texte. Bleib innerhalb eines einzelnen Songs bei genau einer Sprache.\n\nSprachmarkierung: Setz direkt vor den ersten Strukturblock eine Klammer mit dem Sprachcode, passend zur gewählten Sprache: [de] für Deutsch, [en] für Englisch, [es] für Spanisch, [fr] für Französisch, [it] für Italienisch. Das Musikmodell braucht diese Markierung, sonst rät es die Sprache und die Aussprache leidet.\n\nStruktur: Gliedere den Text ausschließlich mit diesen eckigen Blöcken, jeweils in einer eigenen Zeile direkt über dem zugehörigen Text:\n\n[Intro] [Verse] [Pre-Chorus] [Chorus] [Hook] [Bridge] [Interlude] [Outro]\n[Strophe] [Refrain] [Solo] [End]\n\nNutze nur so viele Blöcke wie zur angegebenen Songlänge passen - meist reichen vier bis acht. Die Reihenfolge ist dir überlassen, nicht jeder Block muss vorkommen.\n\nSteht \"Instrumental\" in den Genre Tags: schreib keinen Text, sondern nur den einzelnen Block [Inst] - sonst nichts.\n\nFeste Regeln, ohne Ausnahme:\n- Gib ausschließlich die Strukturblöcke mit dem Liedtext aus. Kein Vortext, kein Nachtext.\n- Keine Einleitung wie \"Hier ist der Text\", keine Erklärung, kein Kommentar zur Aufgabe, keine Rückfrage.\n- Zeig niemals deinen Gedankengang oder Zweifel im Text - triff bei unklaren Angaben einfach eine Entscheidung und schreib den Song.\n- Keine Anführungszeichen, keine Sternchen, keine Prozent- oder Zeitangaben, keine Meta-Hinweise.\n- Jeder Block außer [Inst] braucht direkt darunter auch Text - ein leerer [Chorus] oder [Hook] erzeugt beim Musikmodell nur Stille, keinen Effekt.\n\nDein Text wird direkt vom ACE-Step-Modell vertont - bleib prägnant, nicht ausschweifend."
     },
     "class_type": "PrimitiveStringMultiline",
     "_meta": {
       "title": "System Prompt"
     }
   },
-  "86": {
-    "inputs": {
-      "value": "Please write lyrics for the following song:\n"
-    },
-    "class_type": "PrimitiveStringMultiline",
-    "_meta": {
-      "title": "Prompt Prefix"
-    }
-  },
   "89": {
     "inputs": {
-      "value": "\n\nPlease don't forget: Only your lyrics with structure blocks! This is real music!"
+      "value": "Please write lyrics for the following song:\n\nSong: Grüne Wiese by Blumenland\nGenre: Pop Rock, amotional calm but happy\nLength: Zwei Minuten und Fünfzehn\n\nPlease don't forget: Only your lyrics with structure blocks! This is real music!"
     },
     "class_type": "PrimitiveStringMultiline",
     "_meta": {
-      "title": "Prompt End"
+      "title": "Prompt"
     }
   },
-  "93": {
+  "114": {
     "inputs": {
-      "value": ""
+      "value": 135
     },
-    "class_type": "PrimitiveStringMultiline",
+    "class_type": "PrimitiveFloat",
     "_meta": {
-      "title": "Song Interpret"
+      "title": "Length"
     }
   },
-  "96": {
+  "115": {
     "inputs": {
-      "prefix": "",
-      "suffix": " Seconds. ",
-      "input": [
-        "39",
+      "filename_prefix": "audio/GMP/Music/Music",
+      "format": "mp3",
+      "format.quality": "V0",
+      "audio": [
+        "80",
         0
       ]
     },
-    "class_type": "SomethingToString",
+    "class_type": "SaveAudioAdvanced",
     "_meta": {
-      "title": "To String"
-    }
-  },
-  "97": {
-    "inputs": {
-      "delimiter": ". Length: ",
-      "string1": [
-        "98",
-        0
-      ],
-      "string2": [
-        "96",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
-    }
-  },
-  "98": {
-    "inputs": {
-      "delimiter": ". Genre Tags: ",
-      "string1": [
-        "99",
-        0
-      ],
-      "string2": [
-        "32",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
-    }
-  },
-  "99": {
-    "inputs": {
-      "delimiter": " by ",
-      "string1": [
-        "100",
-        0
-      ],
-      "string2": [
-        "93",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
-    }
-  },
-  "100": {
-    "inputs": {
-      "delimiter": "Song: ",
-      "string1": [
-        "86",
-        0
-      ],
-      "string2": [
-        "41",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
-    }
-  },
-  "101": {
-    "inputs": {
-      "delimiter": "",
-      "string1": [
-        "97",
-        0
-      ],
-      "string2": [
-        "89",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
+      "title": "Save Audio (Advanced)"
     }
   }
 }

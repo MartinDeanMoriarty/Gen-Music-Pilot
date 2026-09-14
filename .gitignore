@@ -3,11 +3,18 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# User Music -- the directory ships, its contents never do
+user_music/*
+!user_music/.gitkeep
+
+# Owned media library + SQLite state (pilot rebuild)
+media/
+
+# Local config (holds API keys) - copy config/config.example.json to start
+/config/config.json
+
 # VSCode
 .vscode/
-
-# Logs
-logs/
 
 # Environments
 .env
