@@ -30,6 +30,6 @@ else
     source .venv/bin/activate
 fi
 
-# Start app with Python3
+# Start the dashboard (use "python main.py" instead for headless)
 echo "Starting App..."
-python3 main.py
+python3 -m pilot.web

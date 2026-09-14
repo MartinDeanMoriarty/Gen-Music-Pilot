@@ -27,22 +27,28 @@
         "model": "qwen3.5:latest"
     },
     "weather": {
-        "apikey": "5885331247fa3e53bf41cda63ca102ca",
+        "apikey": "",
         "location": "Köln",
         "ttl_minutes": 60
     },
     "stream": {
-        "enabled": true,
+        "enabled": false,
         "backend": "pyfanout",
-        "bind": "0.0.0.0:8181",
+        "bind": "0.0.0.0:8080",
         "codec": "mp3",
         "bitrate_kbps": 128,
         "icecast": {
             "host": "127.0.0.1",
             "port": 8000,
             "mount": "/live",
-            "source_password": ""
+            "source_password": "change-me"
         }
+    },
+    "web": {
+        "host": "127.0.0.1",
+        "port": 7860,
+        "share": false,
+        "auto_start": false
     },
     "workflows": {
         "moderation": "workflows/Radio_TTS.json",
@@ -51,16 +57,8 @@
     },
     "user_music_dirs": [
         {
-            "name": "JV",
-            "path": "user_music/jv"
-        },
-        {
-            "name": "Asorted",
-            "path": "user_music/asorted"
-        },
-        {
-            "name": "Test",
-            "path": "user_music/test"
+            "name": "My Collection",
+            "path": "user_music/collection"
         }
     ]
 }

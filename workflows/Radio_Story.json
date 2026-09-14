@@ -1,8 +1,7 @@
 {
   "2": {
     "inputs": {
-      "audio": "Radio_Story.wav",
-      "audioUI": ""
+      "audio": "Radio_Story.wav"
     },
     "class_type": "LoadAudio",
     "_meta": {
@@ -16,6 +15,9 @@
         "16",
         0
       ],
+      "trim_start": 0,
+      "trim_end": 0,
+      "customized": true,
       "opt_audio_input": [
         "2",
         0
@@ -57,10 +59,10 @@
   "8": {
     "inputs": {
       "language": "German",
-      "device": "cpu",
+      "device": "cuda",
       "exaggeration": 0.65,
-      "temperature": 0.65,
-      "cfg_weight": 0.65,
+      "temperature": 0.8,
+      "cfg_weight": 0.5,
       "crash_protection_template": "hmm ,, {seg} hmm ,,"
     },
     "class_type": "ChatterBoxEngineNode",
@@ -76,25 +78,25 @@
       "mirostat_eta": 0.1,
       "enable_mirostat_tau": false,
       "mirostat_tau": 5,
-      "enable_num_ctx": false,
+      "enable_num_ctx": true,
       "num_ctx": 16384,
       "enable_repeat_last_n": false,
       "repeat_last_n": 64,
-      "enable_repeat_penalty": false,
+      "enable_repeat_penalty": true,
       "repeat_penalty": 1.1,
-      "enable_temperature": false,
-      "temperature": 0.8,
+      "enable_temperature": true,
+      "temperature": 0.5,
       "enable_seed": false,
-      "seed": 983458103,
+      "seed": 672344105,
       "enable_stop": false,
       "stop": "",
       "enable_tfs_z": false,
       "tfs_z": 1,
-      "enable_num_predict": false,
-      "num_predict": -1,
-      "enable_top_k": false,
+      "enable_num_predict": true,
+      "num_predict": 400,
+      "enable_top_k": true,
       "top_k": 40,
-      "enable_top_p": false,
+      "enable_top_p": true,
       "top_p": 0.9,
       "enable_min_p": false,
       "min_p": 0,
@@ -108,7 +110,7 @@
   "12": {
     "inputs": {
       "url": "http://127.0.0.1:11434",
-      "model": "mistral-nemo:latest",
+      "model": "qwen3.5:latest",
       "keep_alive": 0,
       "keep_alive_unit": "minutes",
       "🔄 Reconnect": null
@@ -125,7 +127,7 @@
         0
       ],
       "prompt": [
-        "152",
+        "34",
         0
       ],
       "think": false,
@@ -147,11 +149,11 @@
   },
   "34": {
     "inputs": {
-      "value": "Story Time! Das bedeutet du kannst etwas länger reden, ausführlich auf das Wetter und die Jahreszeit eingehen."
+      "value": "Story Time! Das bedeutet du kannst etwas länger reden, ausführlich auf das Wetter und die Jahreszeit eingehen oder denk dir etwas aus.\n\nCaller Interaction: None\n\nNächster Song:\nGrüne Wiese by Blumenland\nGenre: Pop Rock, amotional calm but happy\nLength: Zwei Minuten und Fünfzehn\n\n\nUhrzeit: Dreizehn Uhr und Zwölf Minuten\nDatum: Elfte Dritte Zweitausend Sechsundzwanzig\nWetter: Achtzehn Grad und leicht bewölkt in Köln"
     },
     "class_type": "PrimitiveStringMultiline",
     "_meta": {
-      "title": "Story Prompt"
+      "title": "Prompt"
     }
   },
   "37": {
@@ -160,48 +162,7 @@
     },
     "class_type": "PrimitiveStringMultiline",
     "_meta": {
-      "title": "LLM System Prompt"
-    }
-  },
-  "76": {
-    "inputs": {
-      "filename_prefix": "audio/story",
-      "quality": "V0",
-      "audioUI": "",
-      "audio": [
-        "90",
-        0
-      ]
-    },
-    "class_type": "SaveAudioMP3",
-    "_meta": {
-      "title": "Save Audio (MP3)"
-    }
-  },
-  "87": {
-    "inputs": {
-      "value": "Weather: Sun, 14 Degree Celsius"
-    },
-    "class_type": "PrimitiveStringMultiline",
-    "_meta": {
-      "title": "Weather"
-    }
-  },
-  "88": {
-    "inputs": {
-      "delimiter": " / ",
-      "string1": [
-        "92",
-        0
-      ],
-      "string2": [
-        "87",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
+      "title": "System Prompt"
     }
   },
   "90": {
@@ -216,608 +177,31 @@
       "title": "UnloadModels"
     }
   },
-  "92": {
+  "157": {
     "inputs": {
-      "delimiter": " am ",
-      "string1": [
-        "93",
-        0
-      ],
-      "string2": [
-        "94",
+      "filename_prefix": "audio/GMP/Story/Story",
+      "format": "mp3",
+      "format.quality": "V0",
+      "audio": [
+        "90",
         0
       ]
     },
-    "class_type": "JoinStrings",
+    "class_type": "SaveAudioAdvanced",
     "_meta": {
-      "title": "Join Strings"
+      "title": "Save Audio (Advanced)"
     }
   },
-  "93": {
+  "158": {
     "inputs": {
-      "delimiter": " Zeit und Datum: ",
-      "string1": [
-        "34",
-        0
-      ],
-      "string2": [
-        "95",
+      "source": [
+        "16",
         0
       ]
     },
-    "class_type": "JoinStrings",
+    "class_type": "PreviewAny",
     "_meta": {
-      "title": "Join Strings"
-    }
-  },
-  "94": {
-    "inputs": {
-      "delimiter": "ten ",
-      "string1": [
-        "96",
-        0
-      ],
-      "string2": [
-        "101",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
-    }
-  },
-  "95": {
-    "inputs": {
-      "delimiter": " Uhr ",
-      "string1": [
-        "105",
-        0
-      ],
-      "string2": [
-        "104",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
-    }
-  },
-  "96": {
-    "inputs": {
-      "delimiter": "ten ",
-      "string1": [
-        "97",
-        0
-      ],
-      "string2": [
-        "100",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
-    }
-  },
-  "97": {
-    "inputs": {
-      "number": [
-        "98",
-        0
-      ],
-      "language": "de"
-    },
-    "class_type": "NumberToTextNode",
-    "_meta": {
-      "title": "Number to Text"
-    }
-  },
-  "98": {
-    "inputs": {
-      "string": [
-        "107",
-        0
-      ],
-      "start": 8,
-      "end": 10
-    },
-    "class_type": "StringSubstring",
-    "_meta": {
-      "title": "Day"
-    }
-  },
-  "99": {
-    "inputs": {
-      "string": [
-        "107",
-        0
-      ],
-      "start": 5,
-      "end": 7
-    },
-    "class_type": "StringSubstring",
-    "_meta": {
-      "title": "Month"
-    }
-  },
-  "100": {
-    "inputs": {
-      "number": [
-        "99",
-        0
-      ],
-      "language": "de"
-    },
-    "class_type": "NumberToTextNode",
-    "_meta": {
-      "title": "Number to Text"
-    }
-  },
-  "101": {
-    "inputs": {
-      "number": [
-        "102",
-        0
-      ],
-      "language": "de"
-    },
-    "class_type": "NumberToTextNode",
-    "_meta": {
-      "title": "Number to Text"
-    }
-  },
-  "102": {
-    "inputs": {
-      "string": [
-        "107",
-        0
-      ],
-      "start": 0,
-      "end": 4
-    },
-    "class_type": "StringSubstring",
-    "_meta": {
-      "title": "Year"
-    }
-  },
-  "103": {
-    "inputs": {
-      "string": [
-        "107",
-        1
-      ],
-      "start": 3,
-      "end": 5
-    },
-    "class_type": "StringSubstring",
-    "_meta": {
-      "title": "Minute"
-    }
-  },
-  "104": {
-    "inputs": {
-      "number": [
-        "155",
-        0
-      ],
-      "language": "de"
-    },
-    "class_type": "NumberToTextNode",
-    "_meta": {
-      "title": "Number to Text"
-    }
-  },
-  "105": {
-    "inputs": {
-      "number": [
-        "106",
-        0
-      ],
-      "language": "de"
-    },
-    "class_type": "NumberToTextNode",
-    "_meta": {
-      "title": "Number to Text"
-    }
-  },
-  "106": {
-    "inputs": {
-      "string": [
-        "107",
-        1
-      ],
-      "start": 0,
-      "end": 2
-    },
-    "class_type": "StringSubstring",
-    "_meta": {
-      "title": "Hour"
-    }
-  },
-  "107": {
-    "inputs": {},
-    "class_type": "GetDateTime",
-    "_meta": {
-      "title": "Get DateTime"
-    }
-  },
-  "111": {
-    "inputs": {
-      "value": "Blumenland"
-    },
-    "class_type": "PrimitiveStringMultiline",
-    "_meta": {
-      "title": "Song Interpret"
-    }
-  },
-  "112": {
-    "inputs": {
-      "value": "My Summer"
-    },
-    "class_type": "PrimitiveStringMultiline",
-    "_meta": {
-      "title": "Song Name"
-    }
-  },
-  "113": {
-    "inputs": {
-      "value": "Rock, Pop, drivng and fast."
-    },
-    "class_type": "PrimitiveStringMultiline",
-    "_meta": {
-      "title": "Song Genre & Description"
-    }
-  },
-  "114": {
-    "inputs": {
-      "value": "None"
-    },
-    "class_type": "PrimitiveStringMultiline",
-    "_meta": {
-      "title": "Caller Interaction"
-    }
-  },
-  "115": {
-    "inputs": {
-      "value": "Nächster Song"
-    },
-    "class_type": "PrimitiveStringMultiline",
-    "_meta": {
-      "title": "Prompt Prefix"
-    }
-  },
-  "126": {
-    "inputs": {
-      "value": 200
-    },
-    "class_type": "easy int",
-    "_meta": {
-      "title": "Song Length - Seconds"
-    }
-  },
-  "127": {
-    "inputs": {
-      "a": [
-        "126",
-        0
-      ]
-    },
-    "class_type": "CM_IntToFloat JK",
-    "_meta": {
-      "title": "Seconds"
-    }
-  },
-  "128": {
-    "inputs": {
-      "python_expression": "a / b",
-      "a": [
-        "127",
-        0
-      ],
-      "b": 60,
-      "c": 0
-    },
-    "class_type": "Evaluate Floats JK",
-    "_meta": {
-      "title": "Calc Minutes"
-    }
-  },
-  "129": {
-    "inputs": {
-      "a": [
-        "128",
-        0
-      ]
-    },
-    "class_type": "CM_IntToFloat JK",
-    "_meta": {
-      "title": "Minutes"
-    }
-  },
-  "130": {
-    "inputs": {
-      "python_expression": "a * b",
-      "a": [
-        "129",
-        0
-      ],
-      "b": 60,
-      "c": 0
-    },
-    "class_type": "Evaluate Floats JK",
-    "_meta": {
-      "title": "Calc"
-    }
-  },
-  "131": {
-    "inputs": {
-      "delimiter": " Minuten und ",
-      "string1": [
-        "149",
-        0
-      ],
-      "string2": [
-        "147",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
-    }
-  },
-  "132": {
-    "inputs": {
-      "delimiter": ". Genre: ",
-      "string1": [
-        "133",
-        0
-      ],
-      "string2": [
-        "113",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
-    }
-  },
-  "133": {
-    "inputs": {
-      "delimiter": " von ",
-      "string1": [
-        "134",
-        0
-      ],
-      "string2": [
-        "111",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
-    }
-  },
-  "134": {
-    "inputs": {
-      "delimiter": ": ",
-      "string1": [
-        "115",
-        0
-      ],
-      "string2": [
-        "112",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
-    }
-  },
-  "139": {
-    "inputs": {
-      "delimiter": " Länge: ",
-      "string1": [
-        "132",
-        0
-      ],
-      "string2": [
-        "141",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
-    }
-  },
-  "141": {
-    "inputs": {
-      "delimiter": " Sekunden;",
-      "string1": [
-        "131",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
-    }
-  },
-  "142": {
-    "inputs": {
-      "delimiter": ": ",
-      "string1": [
-        "145",
-        0
-      ],
-      "string2": [
-        "114",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
-    }
-  },
-  "143": {
-    "inputs": {
-      "prefix": "",
-      "suffix": "",
-      "input": [
-        "144",
-        0
-      ]
-    },
-    "class_type": "SomethingToString",
-    "_meta": {
-      "title": "Something To String"
-    }
-  },
-  "144": {
-    "inputs": {
-      "python_expression": "a - b",
-      "a": [
-        "127",
-        0
-      ],
-      "b": [
-        "130",
-        1
-      ],
-      "c": 0
-    },
-    "class_type": "Evaluate Floats JK",
-    "_meta": {
-      "title": "Calc Rest Seconds"
-    }
-  },
-  "145": {
-    "inputs": {
-      "value": "Anrufer Interaktion"
-    },
-    "class_type": "PrimitiveStringMultiline",
-    "_meta": {
-      "title": "Interaction Prefix"
-    }
-  },
-  "147": {
-    "inputs": {
-      "number": [
-        "143",
-        0
-      ],
-      "language": "de"
-    },
-    "class_type": "NumberToTextNode",
-    "_meta": {
-      "title": "Number to Text"
-    }
-  },
-  "148": {
-    "inputs": {
-      "prefix": "",
-      "suffix": "",
-      "input": [
-        "128",
-        0
-      ]
-    },
-    "class_type": "SomethingToString",
-    "_meta": {
-      "title": "Something To String"
-    }
-  },
-  "149": {
-    "inputs": {
-      "number": [
-        "148",
-        0
-      ],
-      "language": "de"
-    },
-    "class_type": "NumberToTextNode",
-    "_meta": {
-      "title": "Number to Text"
-    }
-  },
-  "151": {
-    "inputs": {
-      "delimiter": " -> ",
-      "string1": [
-        "139",
-        0
-      ],
-      "string2": [
-        "142",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
-    }
-  },
-  "152": {
-    "inputs": {
-      "delimiter": " -> ",
-      "string1": [
-        "88",
-        0
-      ],
-      "string2": [
-        "151",
-        0
-      ]
-    },
-    "class_type": "JoinStrings",
-    "_meta": {
-      "title": "Join Strings"
-    }
-  },
-  "153": {
-    "inputs": {
-      "value": "2"
-    },
-    "class_type": "PrimitiveStringMultiline",
-    "_meta": {
-      "title": "Time To Generate Mod+Music"
-    }
-  },
-  "154": {
-    "inputs": {
-      "value": "a + b",
-      "a": [
-        "103",
-        0
-      ],
-      "b": [
-        "153",
-        0
-      ]
-    },
-    "class_type": "SimpleMath+",
-    "_meta": {
-      "title": "🔧 Simple Math"
-    }
-  },
-  "155": {
-    "inputs": {
-      "preview": "57",
-      "value": [
-        "154",
-        0
-      ]
-    },
-    "class_type": "DisplayValue",
-    "_meta": {
-      "title": "Display Value"
+      "title": "Preview as Text"
     }
   }
 }
