@@ -64,9 +64,9 @@ writer is left alone: **[docs/DJ.md](docs/DJ.md)**.
 
 ## Rebuild History
 
-Gen-Music-Pilot started as a solo experiment proving that a small local LLM, a
-cloned voice, and ACE-Step could run an actual radio station - it worked, then
-got shelved for a while. This branch is a ground-up rewrite of that original
+Gen-Music-Pilot started as an experiment, could a small local LLM, a
+cloned voice, and ACE-Step run an actual radio station - it worked, then
+got shelved for a while. This is a ground-up rewrite of that original
 project: same idea, the same ComfyUI pipeline, built with the engineering it
 deserved the first time around.
 
